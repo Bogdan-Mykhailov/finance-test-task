@@ -74,6 +74,7 @@ socketServer.on('connection', (socket) => {
   socket.on('start', () => {
     trackTickers(socket);
   });
+  console.log('you are connected with id:', socket.id)
 });
 
 server.listen(PORT, () => {
