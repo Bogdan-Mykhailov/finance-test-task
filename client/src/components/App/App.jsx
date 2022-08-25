@@ -1,25 +1,14 @@
 import React from "react";
 import s from "./App.module.css";
-import socket from "../../utils/socket";
+import SharesList from "../SharesList/SharesList";
 
-
-function App() {
-
-  socket.emit("start");
-  socket.on("connect", () => {
-    console.log(socket.connected);
-  });
-
-  socket.on("ticker", (data) => {
-    console.log(data);
-  });
-
+const App = () => {
 
   return (
     <div className={s.app}>
-
+      <SharesList/>
     </div>
   );
-}
+};
 
 export default App;
