@@ -1,0 +1,37 @@
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  height: 60px;
+  width: 400px;
+  display: flex;
+  
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  height: 40px;
+  width: 70px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.percent {
+  height: 40px;
+  width: 70px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+
+}

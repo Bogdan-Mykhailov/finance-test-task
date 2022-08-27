@@ -1,28 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { startTradingTC } from "../../bll/sharesReducer";
+import React from "react";
+import s from './SharesItem.module.css'
 
-const SharesItem = () => {
-
-  const dispatch = useDispatch();
-  const shares = useSelector(state => state.shares.shares);
-
-  useEffect(() => {
-    dispatch(startTradingTC())
-  }, [])
+const SharesItem = ({ share, i}) => {
 
   return (
-    <div>
-      {shares.map((s, i) => {
-        return <div key={i}>
-          <span>{s.ticker}</span>
-          <span>{s.price}</span>
-          <span>{s.change}</span>
-          <span>{s.change_percent}</span>
-          <span>{s.dividend}</span>
-          <span>{s.exchange}</span>
-        </div>;
-      })}
+    <div key={i} className={s.itemWrapper}>
+      <ul className={s.item}>
+        <li className={s.title}>{share.ticker}</li>
+        <li className={s.title}>{share.price}</li>
+        <li className={s.percent}>{share.change_percent}%</li>
+      </ul>
     </div>
   );
 };
