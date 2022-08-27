@@ -1,7 +1,7 @@
 import React from "react";
 import SharesItem from "../SharesItem/SharesItem";
 import { useSelector } from "react-redux";
-import s from './SharesList.module.css'
+import s from "./SharesList.module.css";
 
 const SharesList = () => {
 
@@ -9,7 +9,7 @@ const SharesList = () => {
 
   return (
     <div className={s.wrapper}>
-      { shares.map((share, i) => <SharesItem share={share} key={i}/>) }
+      {shares.map((share, i) => <SharesItem share={share} key={i}/>)}
     </div>
   );
 };

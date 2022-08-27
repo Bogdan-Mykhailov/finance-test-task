@@ -81,9 +81,6 @@ export const {setShares} = sharesSlice.actions
 
 export const startTradingTC = () => (dispatch) => {
   socket.emit('start')
-  socket.on('connect', () => {
-    console.log(socket.connected)
-  })
   socket.on('ticker', (data) => {
     dispatch(setShares(data)
     )

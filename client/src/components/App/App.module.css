@@ -7,8 +7,10 @@
   color: #53596e;
   font-weight: 300;
   text-transform: uppercase;
+  box-sizing: border-box;
 }
 
 .app {
-  text-align: center;
+  background-color: azure;
+  height: 100vh;
 }
