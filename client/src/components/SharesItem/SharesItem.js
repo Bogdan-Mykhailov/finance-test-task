@@ -1,81 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./SharesItem.module.css";
 import info from "../../assets/info.png";
-import plus from "../../assets/plus.png";
+import useOutside from "../../utils/useOutside";
 
 const SharesItem = ({
   share,
   i
 }) => {
 
-  const [toggle, setToggle] = useState(false);
+  const {
+    ref,
+    isShow,
+    setIsShow
+  } = useOutside(false);
 
   const ticker = share.ticker;
-  const companyNames =
-    [
-      "Apple Inc.",
-      "Alphabet Inc.",
-      "Microsoft",
-      "Amazon Com.",
-      "Meta",
-      "Tesla Inc.",
-    ];
 
-  const companyNamesHandler = () => {
-    switch (ticker) {
-
-      case "AAPL": {
-        return companyNames[0];
-      }
-      case "GOOGL": {
-        return companyNames[1];
-      }
-      case "MSFT": {
-        return companyNames[2];
-      }
-      case "AMZN": {
-        return companyNames[3];
-      }
-      case "FB": {
-        return companyNames[4];
-      }
-      case "TSLA": {
-        return companyNames[5];
-      }
-
-      default:
-        return ticker;
-    }
-  };
-
-  const openModalHandler = () => {
-    setToggle(toggle => !toggle);
-  };
-
-  const closeModalHandler = () => {
-    setToggle(!toggle);
+  const openInfoWindowHandler = () => {
+    setIsShow(isShow => !isShow);
   };
 
   return (
     <>
       <ul key={i} className={s.list}>
-        <li className={s.title}>{ticker}</li>
-        <span className={s.companyNames}>{companyNamesHandler()}</span>
+        <li style={{ backgroundColor: `${share.color}` }} className={s.title}>{ticker}</li>
+        <span className={s.companyNames}>{share.name}</span>
         <li className={s.price}>{share.price} $</li>
-        <li className={s.percent}>↑ {share.change_percent}%</li>
-        <img onClick={openModalHandler} className={s.infoIcon} src={info} alt="open modal icon"/>
+        <li className={s.percent}>{share.change_percent}%</li>
+        <img onClick={openInfoWindowHandler} className={s.infoIcon} src={info}
+             alt="open modal icon"/>
       </ul>
-      <ul className={toggle ? s.activeModalWrapper : s.modalWrapper}>
-        <li>{companyNamesHandler()}</li>
-        <li>Share name: {ticker}</li>
-        <li>Share price: {share.price} $</li>
-        <li>Exchange: {share.exchange}</li>
-        <li>Change: {share.change} $</li>
-        <li>Change percent: {share.change_percent}%</li>
-        <li>Dividend: {share.dividend} $</li>
-        <li>Yield: {share.yield} $</li>
-        <li>Last trade time: {share.last_trade_time}</li>
 
+      <ul
+        ref={ref}
+        className={isShow
+          ? s.activeInfoWrapper
+          : s.infoWrapper}>
+        <li className={s.information}>Company name:
+          <span className={s.infoTitle}>{share.name}</span></li>
+        <hr/>
+        <li className={s.information}>Share name:
+          <span className={s.infoTitle}>{ticker}</span></li>
+        <li className={s.information}>Share price:
+          <span className={s.infoTitle}>{share.price} $</span></li>
+        <li className={s.information}>Exchange:
+          <span className={s.infoTitle}>{share.exchange}</span></li>
+        <li className={s.information}>Change:
+          <span className={s.infoTitle}>{share.change} $</span></li>
+        <li className={s.information}>Change percent:
+          <span className={s.infoTitle}>{share.change_percent}%</span></li>
+        <li className={s.information}>Dividend:
+          <span className={s.infoTitle}>{share.dividend} $</span></li>
+        <li className={s.information}>Yield:
+          <span className={s.infoTitle}>{share.yield} $</span></li>
+        <li className={s.information}>Last trade time:
+          <span className={s.infoTitle}>{share.last_trade_time}</span></li>
       </ul>
     </>
   );

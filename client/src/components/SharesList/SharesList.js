@@ -8,9 +8,12 @@ const SharesList = () => {
   const shares = useSelector(state => state.shares.shares);
 
   return (
-    <div className={s.wrapper}>
-      {shares.map((share, i) => <SharesItem share={share} key={i}/>)}
-    </div>
+    <>
+      <h1 className={s.title}>The most popular exchange funds on Google</h1>
+      <div className={s.wrapper}>
+        {shares.map((share, i) => <SharesItem share={share} key={i}/>)}
+      </div>
+    </>
   );
 };
 

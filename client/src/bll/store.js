@@ -6,6 +6,7 @@ const store = configureStore({
   reducer: {
     shares: sharesReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(thunk)
-})
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+    .prepend(thunk)
+});
 export default store;
