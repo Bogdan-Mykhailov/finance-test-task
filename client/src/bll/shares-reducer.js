@@ -68,35 +68,12 @@ import socket from "../utils/socket";
 
 const initState = {
   shares: [
-    {
-      name: "Apple Inc.",
-      color: "#858585",
-      isOn: true
-    }, {
-      name: "Alphabet Inc.",
-      color: "#ea4335",
-      isOn: true
-    },
-    {
-      name: "Microsoft",
-      color: "#00a1f1",
-      isOn: true
-    },
-    {
-      name: "Amazon Com.",
-      color: "#ff9900",
-      isOn: true
-    },
-    {
-      name: "Meta",
-      color: "#1877f2",
-      isOn: true
-    },
-    {
-      name: "Tesla Inc.",
-      color: "#cc0000",
-      isOn: true
-    },
+    {name: "Apple Inc.", color: "#858585"},
+    {name: "Alphabet Inc.", color: "#ea4335"},
+    {name: "Microsoft", color: "#00a1f1"},
+    {name: "Amazon Com.", color: "#ff9900"},
+    {name: "Meta", color: "#1877f2"},
+    {name: "Tesla Inc.", color: "#cc0000"}
   ]
 };
 
@@ -113,7 +90,7 @@ const sharesSlice = createSlice({
 });
 
 export const sharesReducer = sharesSlice.reducer;
-export const { setShares, } = sharesSlice.actions;
+export const { setShares } = sharesSlice.actions;
 
 export const startTradingTC = () => (dispatch) => {
   socket.emit("start");

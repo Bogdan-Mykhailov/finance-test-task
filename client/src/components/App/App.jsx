@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import s from "./App.module.css";
 import SharesList from "../SharesList/SharesList";
-import { startTradingTC } from "../../bll/sharesReducer";
+import { startTradingTC } from "../../bll/shares-reducer";
 import { useDispatch } from "react-redux";
 
 const App = () => {

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-import { sharesReducer } from "./sharesReducer";
+import { sharesReducer } from "./shares-reducer";
 
 const store = configureStore({
   reducer: {
